@@ -1,7 +1,9 @@
 *.pdf
+!figures/fig_exampleSingleColumnPlot.pdf
 *.bbl
 *.aux
 *.blg
 *.log
 *.out
 *.fig
+
