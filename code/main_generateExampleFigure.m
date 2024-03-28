@@ -134,8 +134,8 @@ end
 
 figExample = configPlotExporter(figExample,pageWidth,pageHeight);
 fileName = 'fig_exampleSingleColumnPlot';
-print('-dpdf', [fileName,'.pdf']);
- saveas(figExample,fileName,'fig');
+print('-dpdf', ['..',filesep,'figures',filesep,fileName,'.pdf']);
+saveas(figExample,['..',filesep,'figures',filesep,fileName],'fig');
 
 
 

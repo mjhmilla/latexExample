@@ -209,6 +209,13 @@ These entries were manually put into the bib file. The entries can be found in a
 
 To compile the document and the bibliography:
 
+\begin{figure*}[t]
+    \centering
+    \includegraphics{figures/fig_exampleSingleColumnPlot.pdf}
+    \caption{Since the figure is correctly sized already, no extra options are needed: the figure and all of its fonts will appear exactly at the correct size. However, the options 'width=$\backslash$textwidth' and 'keepaspectratio=true' are often used to make the figure fit the full width of the text area (which will make the fonts bigger in this case). Note that the \textbf{figure*} environment is used here rather than \textbf{figure}: the \textbf{*} is needed to add a full-width figure to a 2 column document. Finally, one of the most frustrating things to a beginner is getting \LaTeX{} to put the figure where you want it to appear. The easiest way to do this is to move this command either earlier or later in the text, recompile, and then see if you like the result. The next approach is to suggest a location using the optional figures commands: $\backslash$begin\{figure*\}[h] for here, [!h] for here (more strongly), [t] for top, and [b] for bottom.
+    \label{fig:model}}
+\end{figure*}
+
 \begin{enumerate}
 \item Make sure you have a working version of \LaTeX{} installed on your system.    
 \item Open a terminal window in the same folder as the *.tex file
@@ -229,12 +236,7 @@ In the first command the pdf is generated without references (these will appear 
 \end{enumerate}    
 
 
-\begin{figure*}[!h]
-    \centering
-    \includegraphics{code/fig_exampleSingleColumnPlot.pdf}
-    \caption{Since the figure is correctly sized already, no extra options are needed: the figure and all of its fonts will appear exactly at the correct size. However, the options 'width=$\backslash$textwidth' and 'keepaspectratio=true' are often used to make the figure fit the full width of the text area (which will make the fonts bigger in this case). Note that the \textbf{figure*} environment is used here rather than \textbf{figure}: the \textbf{*} is needed to add a full-width figure to a 2 column document. Finally, one of the most frustrating things to a beginner is getting \LaTeX{} to put the figure where you want it to appear. The easiest way to do this is to move this command either earlier or later in the text, recompile, and then see if you like the result. The next approach is to suggest a location using the optional figures commands: $\backslash$begin\{figure*\}[h] for here, [!h] for here (more strongly), [t] for top, and [b] for bottom.
-    \label{fig:model}}
-\end{figure*}
+
 
 \section{Methods: cross-references + user-defined commands + figure + equation}
 
@@ -266,9 +268,12 @@ and in tables as is shown in Table \ref{tbl:archprop} in Appendix \ref{sec:catSo
     \item Comment the 3 lines immediately after the acknowledgement section (lines 280-283)
     \item Uncomment the $\backslash$printbibliography
     \item Delete main.aux and main.bbl
-    \item In a terminal: pdflatex main
-    \item biber main (may take a while)
-    \item pdflatex main
+    \item In a terminal:
+    \begin{enumerate}
+        \item pdflatex main.tex
+        \item biber main
+        \item pdflatex main.tex
+    \end{enumerate}
     \item If it worked you should see hyperlinked doi numbers for most entries in the references section.
 \end{enumerate}
 
@@ -285,7 +290,7 @@ By adding a * to the section command ($\backslash$section*\{\}) the number in fr
 %\printbibliography
 
 
-
+\newpage
 \appendix
 
 
@@ -296,9 +301,9 @@ By adding a * to the section command ($\backslash$section*\{\}) the number in fr
 
 Just by adding the command $\backslash$appendix (which appears here after the $\backslash$bibliography\{muscleBib\} statement) the section numbering will switch to using alphabetical characters. 
 For your final example, you can find an example of a typesetting a simple table here in Table \ref{tbl:archprop}. 
-The tabular environment is used to make the table, while the table environment is used to turn it into a float: that is something that has a caption (on top by convention) and can be moved around.
+The tabular environment is used to make the table, while the table environment is used to turn it into a float: that is something that has a caption and can be moved around.
 
-\begin{table}[b]
+\begin{table}
 \caption{Cat soleus \mtu{} properties used in this work. \label{tbl:archprop}}
 \begin{center}
 \begin{tabular}{l l | l | l} 
