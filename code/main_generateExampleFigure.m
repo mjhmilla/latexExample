@@ -7,6 +7,10 @@ clear all;
 %        are exactly the size you need in your publication.
 %%
 
+%Get a colour scheme that is compatible with colour blindness.
+cs = getPaulTolColourSchemes('highContrast');
+
+
 legendLineLength=0.25; %Makes the lines 25% the original length
 
 plotSettings.columns = 3;
@@ -16,7 +20,6 @@ plotSettings.height  = 4.;
 plotSettings.horizontalMargin = 1.5;  
 plotSettings.verticalMargin   = 1.5;  
 plotSettings.units  ='centimeters';
-
 plotSettings.interpreter = 'latex';
 plotSettings.baseFontSize = 6;
 plotSettings.axesTitleFontSizeMultiplier = 8/6;
@@ -64,7 +67,7 @@ for i=1:1:plotSettings.rows
         
         %Example experimental data
         plot(omega, sin(omega)+rand(length(omega),1).*0.3-0.15,...
-            '-k','DisplayName','Exp: Force')
+            '-','Color',cs.red,'DisplayName','Exp: Force')
         hold on;
 
         %A background line to enhance the contrast of the model
@@ -76,7 +79,7 @@ for i=1:1:plotSettings.rows
 
         %The example model data
         plot(omega, sin(omega),...
-            '-b','DisplayName','Model');                
+            '-','Color',cs.blue,'DisplayName','Model');                
         hold on;
 
         ylabel('Norm. Force');
